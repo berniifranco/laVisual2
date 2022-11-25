@@ -22,7 +22,10 @@ const productsController = {
         })
     },
     create: (req, res) => {
-        
+        db.Categoria.findAll()
+            .then(categorias => {
+                res.render('product-create-form', {categorias})
+            })
     }
 };
 
