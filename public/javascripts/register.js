@@ -11,8 +11,9 @@ window.addEventListener('load', () => {
     let pais = document.querySelector('.pais');
     let imagen = document.querySelector('.imagen');
 
-    let errores = [];
     form.addEventListener('submit', (e) => {
+        let errores = [];
+        erroresUl.innerHTML = '';
         if (email.value.length == 0) {
             errores.push('Debe ingresar un E-Mail');
         }
