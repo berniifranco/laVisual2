@@ -6,6 +6,10 @@ module.exports = (sequelize, datatTypes) => {
             primaryKey: true,
             autoIncrement: true,
             allowNull: false
+        },
+        cantidad: {
+            type: datatTypes.INTEGER,
+            allowNull: false
         }
     };
     const config = {
@@ -20,12 +24,9 @@ module.exports = (sequelize, datatTypes) => {
             as: 'persona',
             foreignKey: 'id_persona'
         });
-        Carrito.belongsToMany(modelos.Producto, {
-            as: 'productos',
-            through: 'producto_carrito',
-            foreignKey: 'id_carrito',
-            otherKey: 'id_producto',
-            timestamps: false
+        Carrito.belongsTo(modelos.Producto, {
+            as: 'producto',
+            foreignKey: 'id_producto'
         })
     }
 
