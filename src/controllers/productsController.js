@@ -4,7 +4,7 @@ const Op = db.Sequelize.Op;
 const productsController = {
     list: (req, res) => {
         db.Producto.findAll({
-            include: [{association: 'categorias'}, {association: 'persona'}]
+            include: [{association: 'categorias'}]
         })
         .then(resultado => {
             res.render('products', {title: 'listado de productos', productos: resultado})
@@ -36,6 +36,23 @@ const productsController = {
                     id_persona: req.session.usuarioLogueado.id,
                     id_producto: req.params.id
                 })
+            })
+            .then(() => {
+                res.redirect('/products')
+            })
+    },
+    verCarrito: (req, res) => {
+        db.Carrito.findAll({
+            include: [{association: 'producto'}],
+            where: {
+                id_persona: req.session.usuarioLogueado.id
+            }
+        })
+            .then(productos => {
+                res.render('carrito', {title: 'Carrito de Compras', productos})
+            })
+            .catch(err => {
+                res.send(err)
             })
     }
 };

@@ -7,5 +7,6 @@ router.get('/search', productsController.search);
 router.get('/create', productsController.create);
 
 router.post('/add/:id', productsController.agregarCarrito);
+router.get('/carrito', productsController.verCarrito);
 
 module.exports = router;

@@ -10,6 +10,10 @@ module.exports = (sequelize, datatTypes) => {
         cantidad: {
             type: datatTypes.INTEGER,
             allowNull: false
+        },
+        total: {
+            type: datatTypes.INTEGER,
+            allowNull: false
         }
     };
     const config = {
