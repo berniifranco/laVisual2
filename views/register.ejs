@@ -5,12 +5,7 @@
     <%- include('partials/header')  %>
     <div class="margen-navbar">
       <form action="/users/register" method="POST" enctype="multipart/form-data" class="row g-3 registro">
-        <ul class="errores" style="color:crimson"></ul>
-        <% if (locals.errormail && errormail.mail) { %>
-          <h5 class="text-danger">
-            <%= errormail.mail.msg %> 
-          </h5>
-        <% } %>
+        <ul class="errores text-danger"></ul>
         <div class="col-md-6">
           <label for="email" class="form-label">E-Mail</label>
           <input type="email" class="form-control email <%= locals.errors && errors.email ? 'is-invalid' : null %>" value="<%= locals.oldData && oldData.email ? oldData.email : null %>" name="email" id="email" placeholder="nombre@mail.com">
