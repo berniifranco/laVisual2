@@ -26,6 +26,9 @@ const productsController = {
             .then(categorias => {
                 res.render('product-create-form', {categorias})
             })
+    },
+    agregarCarrito: (req, res) => {
+        
     }
 };
 
