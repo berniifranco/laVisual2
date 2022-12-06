@@ -1,7 +1,7 @@
 window.addEventListener('load', () => {
     let form = document.querySelector('.registro');
     let erroresUl = document.querySelector('.errores');
-    let email = document.querySelector('.email');
+    let email = document.querySelector('#email');
     let password = document.querySelector('.password');
     let nombre = document.querySelector('.nombre');
     let usuario = document.querySelector('.usuario');
@@ -13,8 +13,7 @@ window.addEventListener('load', () => {
 
     let errores = [];
     form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        if (email.value == "") {
+        if (email.value.length == 0) {
             errores.push('Debe ingresar un E-Mail');
         }
         if (password.value == "") {
@@ -38,8 +37,13 @@ window.addEventListener('load', () => {
         if (pais.value == "" || pais.value == "Elige...") {
             errores.push('Debe elegir un país');
         }
-        errores.forEach(error => {
-            erroresUl.innerHTML += '<li>' + error + '</li>'
-        })
+
+        if (errores.length != 0) {
+            e.preventDefault();
+            errores.forEach(error => {
+                erroresUl.innerHTML += '<li>' + error + '</li>'
+            })
+        }
+
     })
 })
