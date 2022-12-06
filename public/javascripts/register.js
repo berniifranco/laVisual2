@@ -13,7 +13,6 @@ window.addEventListener('load', () => {
 
     let errores = [];
     form.addEventListener('submit', (e) => {
-        erroresUl.innerHTML = '';
         if (email.value.length == 0) {
             errores.push('Debe ingresar un E-Mail');
         }
