@@ -9,6 +9,7 @@ router.post('/create', productsController.store);
 
 router.post('/add/:id', productsController.agregarCarrito);
 router.get('/carrito', productsController.verCarrito);
+router.delete('/eliminar/:id', productsController.eliminarUnItem);
 router.delete('/vaciar', productsController.vaciarCarrito);
 
 module.exports = router;

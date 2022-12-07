@@ -70,6 +70,17 @@ const productsController = {
                 res.send(err)
             })
     },
+    eliminarUnItem: (req, res) => {
+        db.Carrito.destroy({
+            where: {
+                id: req.params.id,
+                id_persona: req.session.usuarioLogueado.id
+            }
+        })
+            .then(() => {
+                res.redirect('/products/carrito')
+            })
+    },
     vaciarCarrito: (req, res) => {
         db.Carrito.destroy({
             where: {
