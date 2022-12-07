@@ -12,7 +12,11 @@
         <th scope="col">Nombre</th>
         <th scope="col">Categoria</th>
         <th scope="col">Precio</th>
-        <th scope="col">Cantidad</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Imágen</th>
+        <% if (locals.usuarioLogueado) { %>
+          <th scope="col">Cantidad</th>
+        <% } %>
       </tr>
     </thead>
     <tbody>
@@ -31,11 +35,12 @@
               </form>
             </td>
           <% } else { %>
-            <td>
-              <form action="/products/add/<%= o.id %>" method="POST">
+            <form action="/products/add/<%= o.id %>" method="POST">
+              <td><input type="number" min="1" max="<%= parseInt(o.cantidad) %>" name="cantidad"></td>
+              <td>
                 <button class="btn btn-sm btn-dark">Agregar al carrito</button>
-              </form>
-            </td>
+              </td>
+          </form>
           <% } %> 
         </tr>
       <% } %>

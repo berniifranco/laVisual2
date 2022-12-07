@@ -5,6 +5,7 @@ const productsController = require('../controllers/productsController');
 router.get('/', productsController.list);
 router.get('/search', productsController.search);
 router.get('/create', productsController.create);
+router.post('/create', productsController.store);
 
 router.post('/add/:id', productsController.agregarCarrito);
 router.get('/carrito', productsController.verCarrito);

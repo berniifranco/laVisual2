@@ -26,13 +26,28 @@ const productsController = {
             .then(categorias => {
                 res.render('product-create-form', {categorias})
             });
-            res.redirect('/products')
+    },
+    store: (req, res) => {
+        let datos = req.body;
+        db.Producto.create({
+            nombre: datos.nombre,
+            precio: parseInt(datos.precio),
+            cantidad: parseInt(datos.cantidad),
+            id_persona: req.session.usuarioLogueado.id,
+            id_categoria: datos.id_categoria
+        })
+            .then(() => {
+                res.redirect('/products')
+            })
+            .catch(err => {
+                res.send(err)
+            })
     },
     agregarCarrito: (req, res) => {
         db.Producto.findByPk(req.params.id)
             .then(producto => {
                 db.Carrito.create({
-                    cantidad: 1,
+                    cantidad: req.body.cantidad,
                     id_persona: req.session.usuarioLogueado.id,
                     id_producto: req.params.id
                 })
