@@ -8,5 +8,6 @@ router.get('/create', productsController.create);
 
 router.post('/add/:id', productsController.agregarCarrito);
 router.get('/carrito', productsController.verCarrito);
+router.delete('/vaciar', productsController.vaciarCarrito);
 
 module.exports = router;

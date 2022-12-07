@@ -29,7 +29,7 @@ const usersController = {
             pais: datos.pais,
             imagen: req.file.filename,
             id_empresa: 1,
-            id_rol: 1
+            id_rol: 3
         })
         .then(function() {
             res.redirect('/')

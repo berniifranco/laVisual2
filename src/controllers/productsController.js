@@ -54,6 +54,16 @@ const productsController = {
             .catch(err => {
                 res.send(err)
             })
+    },
+    vaciarCarrito: (req, res) => {
+        db.Carrito.destroy({
+            where: {
+                id_persona: req.session.usuarioLogueado.id
+            }
+        })
+            .then(() => {
+                res.redirect('/products/carrito')
+            })
     }
 };
 
