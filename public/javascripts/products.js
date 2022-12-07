@@ -1,8 +1,10 @@
 let precio = document.querySelectorAll('#precio');
 let cantidad = document.querySelectorAll('#cantidad');
 let precioTotal = document.querySelectorAll('#precioTotal');
+let precioFinal = document.querySelector('#precioFinal');
 let precios = [];
 let cantidades = [];
+let finales = 0;
 
 for (o of precio) {
     precios.push(parseFloat(o.innerText.slice(2, o.length)));
@@ -14,4 +16,7 @@ for (const o of cantidad) {
 
 for (let i=0; i<precioTotal.length; i++) {
     precioTotal[i].innerText = '$ ' + (precios[i] * cantidades[i])
+    finales += (precios[i] * cantidades[i])
 }
+
+precioFinal.innerText = '$ ' + finales.toFixed(2);

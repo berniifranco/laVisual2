@@ -36,7 +36,7 @@
             </td>
           <% } else { %>
             <form action="/products/add/<%= o.id %>" method="POST">
-              <td><input type="number" min="1" max="<%= parseInt(o.cantidad) %>" name="cantidad"></td>
+              <td><input type="number" min="1" max="<%= parseInt(o.cantidad) %>" name="cantidad" value="1"></td>
               <td>
                 <button class="btn btn-sm btn-dark">Agregar al carrito</button>
               </td>
