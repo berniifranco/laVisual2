@@ -117,10 +117,12 @@ const productsController = {
                 }
             })
             .then(() => {
-                res.redirect('/products')
+                setTimeout(() => {                    
+                    res.redirect('/products')
+                }, 1000);
             })
             .catch(err => {
-                console.log(err);
+                res.send(err)
             })
     }
 };
