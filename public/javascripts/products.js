@@ -7,7 +7,7 @@ let cantidades = [];
 let finales = 0;
 
 for (o of precio) {
-    precios.push(parseFloat(o.innerText.slice(2, o.length)));
+    precios.push(parseFloat(o.innerText.slice(2, o.length))).toFixed(2);
 }
 
 for (const o of cantidad) {

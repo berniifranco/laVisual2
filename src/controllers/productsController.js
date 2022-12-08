@@ -117,6 +117,13 @@ const productsController = {
                 }
             })
             .then(() => {
+                db.Carrito.destroy({
+                    where: {
+                        id_persona: req.session.usuarioLogueado.id
+                    }
+                })
+            })
+            .then(() => {
                 setTimeout(() => {                    
                     res.redirect('/products')
                 }, 1000);
