@@ -90,6 +90,38 @@ const productsController = {
             .then(() => {
                 res.redirect('/products/carrito')
             })
+    },
+    comprar: (req, res) => {
+        db.Carrito.findAll({
+            where: {
+                id_persona: req.session.usuarioLogueado.id
+            }
+        })
+            .then(productosCarrito => {
+                for (const o of productosCarrito) {
+                    db.Producto.findByPk(o.id_producto)
+                        .then(producto => {
+                            let nuevaCantidad = producto.cantidad - o.cantidad;
+                            let idProducto = producto.id;
+                            db.Producto.update({
+                                cantidad: nuevaCantidad
+                            }, {
+                                where: {
+                                    id: idProducto
+                                }
+                            })
+                        })
+                        .catch(err => {
+                            res.send(err)
+                        })
+                }
+            })
+            .then(() => {
+                res.redirect('/products')
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 };
 

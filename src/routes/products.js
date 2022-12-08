@@ -11,5 +11,6 @@ router.post('/add/:id', productsController.agregarCarrito);
 router.get('/carrito', productsController.verCarrito);
 router.delete('/eliminar/:id', productsController.eliminarUnItem);
 router.delete('/vaciar', productsController.vaciarCarrito);
+router.post('/comprar', productsController.comprar);
 
 module.exports = router;
