@@ -131,6 +131,15 @@ const productsController = {
             .catch(err => {
                 res.send(err)
             })
+    },
+    prueba: (req, res) => {
+        res.render('prueba', {title: 'prueba'});
+    },
+    apiProductos: (req, res) => {
+        db.Producto.findAll()
+        .then(productos => {
+            res.json(productos)
+        })
     }
 };
 

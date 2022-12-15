@@ -13,4 +13,7 @@ router.delete('/eliminar/:id', productsController.eliminarUnItem);
 router.delete('/vaciar', productsController.vaciarCarrito);
 router.post('/comprar', productsController.comprar);
 
+router.get('/api', productsController.apiProductos);
+router.get('/prueba', productsController.prueba);
+
 module.exports = router;
